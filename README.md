@@ -13,8 +13,59 @@
     
 - For example, in the integer 512364783, there are a total number of 9 digits. Here, the number 9 is an odd number. The new integer after swapping this integer will be 521637438.  In this case, the first digit remains unchanged, and the swap begins from the second digit. ​
 
+const swapDigits = (number) => {
+    if (typeof number !== 'number') {
+        throw new Error('Input must be a number');
+    }
 
-Certainly! I'll explain the code for the `swapDigits` function step by step:
+    if (number < 0) {
+        return 0; // Return 0 for negative numbers
+    }
+
+    let numberStr = number.toString(); // Convert the input number to a string
+    let numberArray = numberStr.split(''); // Split the string into an array of digits
+
+    // Determine if the total number of digits is even or odd
+    const isEven = numberArray.length % 2 === 0;
+
+    // Swap the digits based on whether the total number of digits is even or odd
+    for (let i = isEven ? 0 : 1; i < numberArray.length - 1; i += 2) {
+        let temp = numberArray[i];
+        numberArray[i] = numberArray[i + 1];
+        numberArray[i + 1] = temp;
+    }
+
+    // Join the array back into a string and parse it as an integer
+    let swappedNumber = parseInt(numberArray.join(''), 10);
+    return swappedNumber;
+
+}
+
+module.exports = swapDigits
+
+**Test Case - Chai**
+
+const chai = require('chai')
+const expect = chai.expect
+
+const swapDigits = require('../src/swapdigits')
+
+describe('Swap Digits 1',()=>{
+    it('swap the given even digits',()=>{
+        expect(swapDigits(123455)).to.equal(214355)
+    })
+    it('swap the given odd digits',()=>{
+        expect(swapDigits(123)).to.equal(132)
+    })
+    it('swap the given one digit',()=>{
+        expect(swapDigits(0)).to.equal(0)
+    })
+    it('swap the given negative number', () => {
+        expect(swapDigits(-512364783)).to.equal(0);
+      });
+})
+
+- explain the code for the `swapDigits` function step by step:
 
 ```javascript
 const swapDigits = (number) => {
