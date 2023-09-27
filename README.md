@@ -12,7 +12,7 @@
 - If the total number of digits in the integer ‘n’ is odd, then the first digit remains unchanged, and swapping begins from the second digit onwards.​​
     
 - For example, in the integer 512364783, there are a total number of 9 digits. Here, the number 9 is an odd number. The new integer after swapping this integer will be 521637438.  In this case, the first digit remains unchanged, and the swap begins from the second digit. ​
-
+```Javascript
 const swapDigits = (number) => {
     if (typeof number !== 'number') {
         throw new Error('Input must be a number');
@@ -42,9 +42,9 @@ const swapDigits = (number) => {
 }
 
 module.exports = swapDigits
-
+```
 **Test Case - Chai**
-
+```Javascript
 const chai = require('chai')
 const expect = chai.expect
 
@@ -64,7 +64,7 @@ describe('Swap Digits 1',()=>{
         expect(swapDigits(-512364783)).to.equal(0);
       });
 })
-
+```
 - explain the code for the `swapDigits` function step by step:
 
 ```javascript
